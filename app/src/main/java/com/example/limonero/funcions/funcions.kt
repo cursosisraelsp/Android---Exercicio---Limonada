@@ -34,7 +34,16 @@ fun seleccion(valor: Int):Int{
     }
     return eleccion
 }
-
+fun textos(valor: Int):Int{
+    val textoSalida = when(valor){
+        1 -> R.string.select_lemon
+        2 -> R.string.tapping_lemon
+        3 -> R.string.drink_lemon
+        4 -> R.string.glass_lemon
+        else -> R.string.tree_lemon
+    }
+    return textoSalida
+}
 fun imaxes(result: Int):Int{
     val imaxen = when (result){
         // As veces o IDE non da de maneira automática a clase R, deberemos situarnos para importala
@@ -65,11 +74,15 @@ fun Exprimo(modifier: Modifier = Modifier){
     ){
         // Temos diferentes opcións en 'https://androindian.com/image-button-in-jetpack/'
         IconButton(onClick = {result = seleccion(result)},modifier = Modifier.size(350.dp) ) {
-            Image(
-                painter = painterResource(imageResource),
-                contentDescription = result.toString(),
-
+            Column {
+                Image(
+                    painter = painterResource(imageResource),
+                    contentDescription = result.toString()
                 )
+                val frase = textos(result)
+                Text(text = stringResource(frase))
+            }
+
         }
 
 
