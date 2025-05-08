@@ -1,10 +1,15 @@
 package com.example.limonero.funcions
 
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.limonero.R
 
 fun seleccion(valor: Int):Int{
@@ -57,17 +63,15 @@ fun Exprimo(modifier: Modifier = Modifier){
         horizontalAlignment = Alignment.CenterHorizontally,
 
     ){
-        Image(
-            painter = painterResource(imageResource),
-            contentDescription = result.toString(),
-
-        )
-        Button(onClick = {result = seleccion(result) },modifier = Modifier.background(color = Color.Red)) {
+        // Temos diferentes opcións en 'https://androindian.com/image-button-in-jetpack/'
+        IconButton(onClick = {result = seleccion(result)},modifier = Modifier.size(350.dp) ) {
             Image(
                 painter = painterResource(imageResource),
-                contentDescription = "texto"
-            )
+                contentDescription = result.toString(),
+
+                )
         }
+
 
     }
 }
