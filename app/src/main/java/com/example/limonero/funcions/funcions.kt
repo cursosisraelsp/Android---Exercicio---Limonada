@@ -19,7 +19,27 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.limonero.R
 
+fun seleccion(valor: Int):Int{
+    val eleccion = when (valor){
+        1 -> 2
+        2 -> 3
+        3 -> 4
+        else -> 1
+    }
+    return eleccion
+}
 
+fun imaxes(result: Int):Int{
+    val imaxen = when (result){
+        // As veces o IDE non da de maneira automática a clase R, deberemos situarnos para importala
+        1 -> R.drawable.lemon_tree
+        2 -> R.drawable.lemon_squeeze
+        3 -> R.drawable.lemon_drink
+        4 -> R.drawable.lemon_restart
+        else -> R.drawable.lemon_tree
+    }
+    return imaxen
+}
 @Preview
 @Composable
 fun Exprimo(modifier: Modifier = Modifier){
@@ -30,14 +50,7 @@ fun Exprimo(modifier: Modifier = Modifier){
         - import androidx.compose.runtime.setValue
     * */
     var result by remember { mutableStateOf(1) }
-    val imageResource = when (result){
-        // As veces o IDE non da de maneira automática a clase R, deberemos situarnos para importala
-        1 -> R.drawable.lemon_tree
-        2 -> R.drawable.lemon_squeeze
-        3 -> R.drawable.lemon_drink
-        4 -> R.drawable.lemon_restart
-        else -> R.drawable.lemon_tree
-    }
+    val imageResource = imaxes(result)
 
     Column (
         modifier = modifier,
@@ -49,7 +62,7 @@ fun Exprimo(modifier: Modifier = Modifier){
             contentDescription = result.toString(),
 
         )
-        Button(onClick = {result = (1..4).random()},modifier = Modifier.background(color = Color.Red)) {
+        Button(onClick = {result = seleccion(result) },modifier = Modifier.background(color = Color.Red)) {
             Image(
                 painter = painterResource(imageResource),
                 contentDescription = "texto"
