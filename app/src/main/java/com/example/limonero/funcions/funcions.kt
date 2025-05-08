@@ -4,7 +4,12 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
@@ -23,6 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.limonero.R
 
 fun seleccion(valor: Int):Int{
@@ -55,7 +61,24 @@ fun imaxes(result: Int):Int{
     }
     return imaxen
 }
-@Preview
+
+@Composable
+fun OTitulo(titulo: String,modificador: Modifier):Unit{
+    Box(){
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .background(color = Color.Yellow)
+                .fillMaxHeight(0.05f)
+                .fillMaxWidth(1f)){
+
+            Text(text = titulo ,fontSize = 25.sp)
+        }
+    }
+
+}
+@Preview (showBackground = true)
 @Composable
 fun Exprimo(modifier: Modifier = Modifier){
     /*
@@ -67,24 +90,32 @@ fun Exprimo(modifier: Modifier = Modifier){
     var result by remember { mutableStateOf(1) }
     val imageResource = imaxes(result)
 
-    Column (
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        OTitulo(stringResource(R.string.app_name),Modifier.background(color = Color.Yellow).fillMaxWidth(1f))
+        Column (
+            modifier = modifier.fillMaxHeight(1f).fillMaxWidth(1f),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ){
 
-    ){
-        // Temos diferentes opcións en 'https://androindian.com/image-button-in-jetpack/'
-        IconButton(onClick = {result = seleccion(result)},modifier = Modifier.size(350.dp) ) {
-            Column {
-                Image(
-                    painter = painterResource(imageResource),
-                    contentDescription = result.toString()
-                )
-                val frase = textos(result)
-                Text(text = stringResource(frase))
+            // Temos diferentes opcións en 'https://androindian.com/image-button-in-jetpack/'
+            IconButton(
+                onClick = {result = seleccion(result)},
+                modifier = Modifier.size(350.dp) ) {
+                Column (horizontalAlignment = Alignment.CenterHorizontally){
+                    Image(
+                        painter = painterResource(imageResource),
+                        contentDescription = result.toString(),
+                        Modifier.background(color = Color.Blue)
+                    )
+                    val frase = textos(result)
+                    Text(text = stringResource(frase))
+                }
+
             }
 
+
         }
-
-
     }
+
 }
