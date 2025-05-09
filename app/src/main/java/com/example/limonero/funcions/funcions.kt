@@ -106,28 +106,10 @@ fun Exprimo(modifier: Modifier = Modifier){
             val hue = 30f // Tono (0-360)
             val saturation = 0.8f // Saturación (0-1)
             val lightness = 0.5f // Luminosidad (0-1)
-            Button(
-                onClick = {result = seleccion(result)},
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent,
-                    contentColor = Color.Black
-                ),
-                modifier = Modifier.clip(RoundedCornerShape(36.dp)).background(color = Color.hsl(hue,saturation,lightness)).size(350.dp)
-                ) {
-                Column (horizontalAlignment = Alignment.CenterHorizontally){
-                    Image(
-                        painter = painterResource(imageResource),
-                        contentDescription = result.toString(),
-
-                        )
-                    val frase = textos(result)
-                    Text(text = stringResource(frase))
-                }
-            }
 
 
             // Temos diferentes opcións en 'https://androindian.com/image-button-in-jetpack/'
-            /*IconButton(
+            IconButton(
                 onClick = {result = seleccion(result)},
                 modifier = Modifier.size(350.dp).clip(RoundedCornerShape(36.dp)).background(color = Color.hsl(hue,saturation,lightness))
                  ) {
@@ -141,7 +123,7 @@ fun Exprimo(modifier: Modifier = Modifier){
                     Text(text = stringResource(frase))
                 }
 
-            }*/
+            }
 
 
         }
