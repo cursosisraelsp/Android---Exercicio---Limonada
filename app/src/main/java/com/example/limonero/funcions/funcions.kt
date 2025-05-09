@@ -126,23 +126,6 @@ fun Exprimo(modifier: Modifier = Modifier){
             }
 
 
-            // Temos diferentes opcións en 'https://androindian.com/image-button-in-jetpack/'
-            /*IconButton(
-                onClick = {result = seleccion(result)},
-                modifier = Modifier.size(350.dp).clip(RoundedCornerShape(36.dp)).background(color = Color.hsl(hue,saturation,lightness))
-                 ) {
-                Column (horizontalAlignment = Alignment.CenterHorizontally){
-                    Image(
-                        painter = painterResource(imageResource),
-                        contentDescription = result.toString(),
-
-                    )
-                    val frase = textos(result)
-                    Text(text = stringResource(frase))
-                }
-
-            }*/
-
 
         }
     }
