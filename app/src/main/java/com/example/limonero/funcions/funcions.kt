@@ -49,8 +49,11 @@ fun textos(valor: Int):Int{
     val textoSalida = when(valor){
         1 -> R.string.select_lemon
         2 -> R.string.tapping_lemon
-        3 -> R.string.drink_lemon
-        4 -> R.string.glass_lemon
+        3 -> R.string.tapping_lemon
+        4 -> R.string.tapping_lemon
+        5 -> R.string.tapping_lemon
+        6 -> R.string.drink_lemon
+        7 -> R.string.glass_lemon
         else -> R.string.tree_lemon
     }
     return textoSalida
@@ -60,8 +63,11 @@ fun imaxes(result: Int):Int{
         // As veces o IDE non da de maneira automática a clase R, deberemos situarnos para importala
         1 -> R.drawable.lemon_tree
         2 -> R.drawable.lemon_squeeze
-        3 -> R.drawable.lemon_drink
-        4 -> R.drawable.lemon_restart
+        3 -> R.drawable.lemon_squeeze
+        4 -> R.drawable.lemon_squeeze
+        5 -> R.drawable.lemon_squeeze
+        6 -> R.drawable.lemon_drink
+        7 -> R.drawable.lemon_restart
         else -> R.drawable.lemon_tree
     }
     return imaxen
