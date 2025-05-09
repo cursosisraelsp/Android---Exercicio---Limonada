@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.IconButton
@@ -23,7 +24,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -97,16 +100,21 @@ fun Exprimo(modifier: Modifier = Modifier){
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ){
+            // Define un color HSL
+            val hue = 30f // Tono (0-360)
+            val saturation = 0.8f // Saturación (0-1)
+            val lightness = 0.5f // Luminosidad (0-1)
 
             // Temos diferentes opcións en 'https://androindian.com/image-button-in-jetpack/'
             IconButton(
                 onClick = {result = seleccion(result)},
-                modifier = Modifier.size(350.dp) ) {
+                modifier = Modifier.size(350.dp).clip(RoundedCornerShape(36.dp)).background(color = Color.hsl(hue,saturation,lightness))
+                 ) {
                 Column (horizontalAlignment = Alignment.CenterHorizontally){
                     Image(
                         painter = painterResource(imageResource),
                         contentDescription = result.toString(),
-                        Modifier.background(color = Color.Blue)
+
                     )
                     val frase = textos(result)
                     Text(text = stringResource(frase))
