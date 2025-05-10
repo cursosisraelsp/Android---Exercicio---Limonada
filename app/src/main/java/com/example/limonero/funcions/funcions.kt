@@ -83,6 +83,7 @@ fun OTitulo(titulo: String,modificador: Modifier):Unit{
     }
 
 }
+
 @Preview (showBackground = true)
 @Composable
 fun Exprimo(modifier: Modifier = Modifier){
@@ -96,7 +97,7 @@ fun Exprimo(modifier: Modifier = Modifier){
     val imageResource = imaxes(result)
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        OTitulo(stringResource(R.string.app_name),Modifier.background(color = Color.Yellow).fillMaxWidth(1f))
+        //OTitulo(stringResource(R.string.app_name),Modifier.background(color = Color.Yellow).fillMaxWidth(1f))
         Column (
             modifier = modifier.fillMaxHeight(1f).fillMaxWidth(1f),
             horizontalAlignment = Alignment.CenterHorizontally,
